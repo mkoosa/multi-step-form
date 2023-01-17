@@ -1,0 +1,29 @@
+/* regular medium, bold */
+
+/* common   */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+
+    border: none
+}
+
+html {
+    font-size: 62.5%;
+
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+
+.row {
+    display: flex;
+}
+
+/* end of common   */

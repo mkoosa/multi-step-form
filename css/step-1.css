@@ -1,0 +1,123 @@
+body {
+    position: relative;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh;
+
+}
+
+/* sidebar  */
+.sidebar {
+    display: inline-block;
+    width: 100%;
+    height: 15rem;
+    background-image: url(../assets/images/bg-sidebar-mobile.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sidebar__list {
+    padding-left: 0;
+    margin: 3rem auto;
+    justify-content: center;
+}
+
+.sidebar__element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-weight: 500;
+    font-size: 1.4rem;
+    border: .1rem solid hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 100%);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.sidebar__element.active {
+    background-color: hsl(206, 94%, 87%);
+    color: hsl(243, 100%, 62%);
+    border: none;
+}
+
+.sidebar__element+.sidebar__element {
+    margin-left: 1.5rem;
+}
+
+/* end of sidebar  */
+
+/* personal  */
+.blue-background {
+    background-color: hsl(228, 100%, 84%);
+    opacity: .3;
+    height: 67vh;
+}
+
+.personal {
+    padding: 3rem 1.5rem;
+    position: absolute;
+    max-width: 35rem;
+    top: 9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background-color: hsl(231, 100%, 99%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    border-radius: .9rem;
+    -webkit-border-radius: .9rem;
+    -moz-border-radius: .9rem;
+    -ms-border-radius: .9rem;
+    -o-border-radius: .9rem;
+    box-shadow: .5rem .5rem -1rem hsl(0, 0%, 100%);
+}
+
+.personal__heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.personal__text {
+    font-size: 1.7rem;
+    color: hsl(231, 11%, 63%);
+}
+
+.form-text {
+    margin-top: .5rem;
+    font-size: 1.3rem;
+}
+
+.personal__label {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+
+}
+
+.personal__input {
+    font-size: 1.6rem;
+    padding: .5rem 0;
+}
+
+/* end of personal  */
+
+.next-btn {
+    position: absolute;
+    right: 2rem;
+    bottom: 3rem;
+    font-size: 1.4rem;
+    padding: .5em 1em;
+    background-color: hsl(213, 96%, 18%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: .5rem .5rem -2rem hsl(213, 96%, 18%);
+}
