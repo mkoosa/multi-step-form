@@ -3,8 +3,8 @@ body {
 }
 
 .wrapper {
-    width: 100%;
     height: 100vh;
+    width: 100%;
 
 }
 
@@ -48,6 +48,7 @@ body {
     border: none;
 }
 
+
 .sidebar__element+.sidebar__element {
     margin-left: 1.5rem;
 }
@@ -56,7 +57,7 @@ body {
 
 /* personal  */
 .blue-background {
-    background-color: hsl(228, 100%, 84%);
+    background-color: hsl(228, 70%, 84%);
     opacity: .3;
     height: 67vh;
 }
@@ -64,7 +65,7 @@ body {
 .personal {
     padding: 3rem 1.5rem;
     position: absolute;
-    max-width: 35rem;
+    max-width: 40rem;
     top: 9rem;
     left: 50%;
     transform: translateX(-50%);
@@ -121,3 +122,10 @@ body {
     color: hsl(0, 0%, 100%);
     box-shadow: .5rem .5rem -2rem hsl(213, 96%, 18%);
 }
+
+@media(orientation:landscape) {
+    .wrapper {
+        height: 62rem;
+    }
+}
+
