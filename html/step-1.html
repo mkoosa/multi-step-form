@@ -19,40 +19,74 @@
     <div class="wrapper">
         <!-- sidebar  -->
         <div class="sidebar">
-            <ul class="sidebar__list row">
-                <li class="sidebar__element active">1</li>
+            <ul class="sidebar__mobile d-row">
+                <li class="sidebar__element side-act">1</li>
                 <li class="sidebar__element">2</li>
                 <li class="sidebar__element">3</li>
                 <li class="sidebar__element">4</li>
             </ul>
+            <div class="sidebar__desktop">
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number side-act">1</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 1</p>
+                        <p class="desktop-element__text">your info</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">2</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 2</p>
+                        <p class="desktop-element__text">your info</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">3</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 3</p>
+                        <p class="desktop-element__text">your info</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">4</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 4</p>
+                        <p class="desktop-element__text">your info</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- end of sidebar  -->
         <!-- personal  -->
         <div class="blue-background"></div>
         <div class="personal">
-            <h1 class="personal__heading">Personal info</h1>
-            <p class="personal__text">Please provide your name, email, address, and phone number.</p>
-            <form>
-                <div class="mb-3">
-                    <label for="formName" class="form-label personal__label">Name</label>
-                    <input type="text" class="form-control personal__input" id="formName"
-                        placeholder="e.g. Stephen King">
-                </div>
-                <div class="mb-3">
-                    <label for="formEmail" class="form-label personal__label">Email address</label>
-                    <input type="email" class="form-control personal__input" id="formEmail" aria-describedby="emailHelp"
-                        placeholder="e.g. stephenKing@lorem.com">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="phoneNumber" class="form-label personal__label">Phone Number</label>
-                    <input type="text" class="form-control personal__input" id="phoneNumber"
+            <div class="personal__wrapper">
+
+                <h1 class="personal__heading">Personal info</h1>
+                <p class="personal__text">Please provide your name, email, address, and phone number.</p>
+                <form>
+                    <div class="mb-3">
+                        <label for="formName" class="form-label personal__label">Name</label>
+                        <input type="text" class="form-control personal__input" id="formName"
+                            placeholder="e.g. Stephen King">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formEmail" class="form-label personal__label">Email address</label>
+                        <input type="email" class="form-control personal__input" id="formEmail"
+                            aria-describedby="emailHelp" placeholder="e.g. stephenKing@lorem.com">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label personal__label">Phone Number</label>
+                        <input type="text" class="form-control personal__input" id="phoneNumber"
                         placeholder="e.g. +123456789">
-                </div>
+                    </div>
+                </form>
+                <button type="submit" class="next-btn next-btn--desktop">Next Step</button>
             </div>
-            <button type="submit" class="next-btn">Next Step</button>
-        </form>
-        
+        </div>
+        <button type="submit" class="next-btn next-btn--mobile">Next Step</button>
+
         <!-- end of personal  -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
