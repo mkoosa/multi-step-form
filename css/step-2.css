@@ -98,6 +98,7 @@ p {
 /* options  */
 .options {
     margin: 2rem 0;
+
 }
 
 .option {
@@ -109,6 +110,8 @@ p {
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
+    /* width: 100; */
+
 }
 
 .option__img {
@@ -144,7 +147,6 @@ p {
     -moz-border-radius: 1rem;
     -ms-border-radius: 1rem;
     -o-border-radius: 1rem;
-
 }
 
 .switch__box {
@@ -197,7 +199,6 @@ p {
     visibility: hidden;
 }
 
-
 .footer {
     flex-grow: 1;
     align-items: center;
@@ -213,6 +214,11 @@ p {
     font-weight: 500;
     padding: .5em 1em;
     margin: 1rem 0;
+}
+
+.go-back--desktop {
+    visibility: hidden;
+    display: none;
 }
 
 .next-btn {
@@ -257,6 +263,7 @@ p {
         box-shadow: .1rem .1rem .1rem hsl(229, 24%, 87%);
         background-color: hsl(0, 0%, 100%);
         flex-direction: row;
+
     }
 
     .sidebar {
@@ -343,7 +350,6 @@ p {
 
     .select {
         height: auto;
-        margin: 0 7rem;
         flex-basis: 75%;
         position: initial;
         max-width: initial;
@@ -361,6 +367,7 @@ p {
     }
 
     .select__wrapper {
+        text-align: center;
         margin: 2.5rem 0;
         border-radius: 0;
         display: flex;
@@ -375,6 +382,39 @@ p {
         -ms-border-radius: 0;
         -o-border-radius: 0;
     }
+
+    .options {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .option {
+        flex-basis: 25%;
+        max-width: 20rem;
+        text-align: left;
+        flex-direction: column;
+        justify-content: flex-start
+    }
+
+    .option_bonus {
+        width: max-content;
+    }
+
+    .option+.option {
+        margin-left: 1rem;
+    }
+
+    .option__img {
+        margin-bottom: 2rem;
+    }
+
+    .go-back--desktop {
+        visibility:visible;;
+        display: block;
+    }
+    
 
     .nav {
         align-items: flex-end;
@@ -404,4 +444,12 @@ p {
     .footer {
         display: none;
     }
+}
+
+@media(min-width:850px) {
+    option+.option {
+        margin-left: 0rem;
+
+    }
+
 }
