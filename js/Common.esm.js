@@ -5,7 +5,14 @@ export default class Common {
 
   bindToElement(elementId) {
     return document.getElementById(elementId);
+  }
+
+  addClass(className) {
+    this.element.classList.add(className);
+  }
+  
+  removeClass(className) {
+    this.element.classList.remove(className);
     
   }
 }
-
