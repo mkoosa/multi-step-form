@@ -5,7 +5,7 @@ const NUMBER_LENGTH = 8;
 const NAME_INPUT_ID = "formName";
 const PHONE_INPUT_ID = "phoneNumber";
 const EMAIL_INPUT_ID = "formEmail";
-const INPUTS = document.querySelectorAll(".input");
+const INPUTS = document.querySelectorAll(".form-control");
 const NUMBER_INPUT = document.getElementById(PHONE_INPUT_ID);
 const EMAIL_INPUT = document.getElementById(EMAIL_INPUT_ID);
 const NAME_INPUT = document.getElementById(NAME_INPUT_ID);
@@ -143,6 +143,13 @@ function removeImgFromInputs(elements) {
   elements.forEach((element) => (element.style.backgroundImage = "none"));
 };
 
+function clearInputs() {
+  INPUTS.forEach(input => {
+    input.value = '';
+  })
+  
+}
+
 // is next step allow
 
 function checkInputsFlags() {
@@ -152,6 +159,7 @@ function checkInputsFlags() {
 
 function nextStep() {
   window.location.href = `./step-2.html`;
+  clearInputs();
 };
 
 
