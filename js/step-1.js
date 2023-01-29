@@ -1,3 +1,5 @@
+import Loader from "./Loader.esm.js";
+
 //validation form
 
 const SUCCESS_COLOR = "#198754";
@@ -5,10 +7,17 @@ const NUMBER_LENGTH = 8;
 const NAME_INPUT_ID = "formName";
 const PHONE_INPUT_ID = "phoneNumber";
 const EMAIL_INPUT_ID = "formEmail";
+const LOADER_ID = "loaderId";
+const WRAPPER_ID = 'wrapper' 
+
 const INPUTS = document.querySelectorAll(".form-control");
 const NUMBER_INPUT = document.getElementById(PHONE_INPUT_ID);
 const EMAIL_INPUT = document.getElementById(EMAIL_INPUT_ID);
 const NAME_INPUT = document.getElementById(NAME_INPUT_ID);
+const WRAPPER = document.getElementById(WRAPPER_ID);
+
+const DISPLAY = "display";
+const BLUR = 'blur'
 
 let nameFlag = false;
 let emailFlag = false;
@@ -28,7 +37,7 @@ const getNumber = () => {
       function (event) {
         if (checkInputsFlags()) {
           nextStep();
-        };
+        }
         removeImgFromInputs(INPUTS);
         getNumber().then((data) => {
           if (!validatePhoneNumber(data.value)) {
@@ -57,12 +66,12 @@ const getNumber = () => {
 //validation inputs
 function validateName(name) {
   return name.trim() ? true : false;
-};
+}
 
 function validatePhoneNumber(input_str) {
   let re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{3})$/;
   return re.test(input_str);
-};
+}
 
 function validateEmail(email) {
   return String(email)
@@ -70,12 +79,12 @@ function validateEmail(email) {
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
-};
+}
 
 function validateComment(element, value) {
   showHideComment(element, value);
   showHideBorder(element, value);
-};
+}
 
 function checkName(e) {
   if (validateName(e.target.value)) {
@@ -84,7 +93,7 @@ function checkName(e) {
   } else {
     nameFlag = false;
     validateComment(e.target.nextElementSibling, false);
-  };
+  }
 }
 
 function checkEmail(e) {
@@ -94,8 +103,8 @@ function checkEmail(e) {
   } else {
     emailFlag = false;
     validateComment(e.target.nextElementSibling, false);
-  };
-};
+  }
+}
 
 function checkNumber(e) {
   if (
@@ -107,59 +116,63 @@ function checkNumber(e) {
   } else {
     numberFlag = false;
     validateComment(e.target.nextElementSibling, false);
-  };
-};
+  }
+}
 
 NUMBER_INPUT.addEventListener("keyup", (e) => {
   checkNumber(e);
-  checkInputsFlags()
+  checkInputsFlags();
 });
 EMAIL_INPUT.addEventListener("keyup", (e) => {
   checkEmail(e);
-  checkInputsFlags()
+  checkInputsFlags();
 });
 NAME_INPUT.addEventListener("keyup", (e) => {
   checkName(e);
-  checkInputsFlags()
+  checkInputsFlags();
 });
 
 function showHideComment(element, value) {
   if (!value) {
     element.style.display = "block";
     return;
-  };
+  }
   element.style.display = "none";
-};
+}
 
 function showHideBorder(element, value) {
   if (!value) {
     element.previousElementSibling.style.borderColor = "red";
     return;
-  };
+  }
   element.previousElementSibling.style.borderColor = "green";
-};
+}
 
 function removeImgFromInputs(elements) {
   elements.forEach((element) => (element.style.backgroundImage = "none"));
-};
+}
 
 function clearInputs() {
-  INPUTS.forEach(input => {
-    input.value = '';
-  })
-  
+  INPUTS.forEach((input) => {
+    input.value = "";
+  });
 }
 
 // is next step allow
 
 function checkInputsFlags() {
   console.log(nameFlag, emailFlag, numberFlag);
-  return nameFlag && emailFlag && numberFlag ? true : false
-};
+  return nameFlag && emailFlag && numberFlag ? true : false;
+}
 
 function nextStep() {
-  window.location.href = `./step-2.html`;
-  clearInputs();
-};
-
-
+  WRAPPER.classList.add(BLUR)
+  const loader = new Loader(LOADER_ID);
+  loader.addClass(DISPLAY);
+  setTimeout(() => {
+    window.location.href = `./step-2.html`;
+    loader.removeClass(DISPLAY);
+    clearInputs();
+    WRAPPER.classList.remove(BLUR)
+  }, 2000);
+}

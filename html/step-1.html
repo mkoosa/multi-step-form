@@ -16,7 +16,12 @@
 </head>
 
 <body>
-    <div class="wrapper d-row">
+    <div class="lds-facebook none" id="loaderId">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wrapper d-row" id="wrapper">
         <!-- sidebar  -->
         <div class="sidebar">
             <ul class="sidebar__mobile d-row">
@@ -77,10 +82,10 @@
                         <label for="formEmail" class="form-label personal__label">Email address</label>
                         <input type="email" class="form-control personal__input input" id="formEmail"
                             aria-describedby="emailHelp" placeholder="e.g. stephenKing@lorem.com" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid email.
-                            </div>
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div class="invalid-feedback">
+                            Please provide a valid email.
+                        </div>
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label personal__label">Phone Number</label>
