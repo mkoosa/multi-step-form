@@ -22,7 +22,7 @@ export default class Switch extends Common {
   }
 
   chooseOption() {
-    this.box.addEventListener("click", this.change);
+    this.box.addEventListener("click", (e) => this.change(e));
   }
   change(e) {
     let switcher = e.target;
@@ -30,5 +30,17 @@ export default class Switch extends Common {
     let position = styles.justifyContent;
     switcher.style.justifyContent =
       position === "flex-start" ? "flex-end" : "flex-start";
+    this.changeTextColor(switcher)
   }
+
+  changeTextColor(element) {
+    let position = element.style.justifyContent;
+    this.year.style.color = position === "flex-end" ? 'hsl(213, 96%, 18%)' : 'hsl(231, 11%, 63%)';
+    this.mouth.style.color = position !== "flex-end" ? 'hsl(213, 96%, 18%)' : 'hsl(231, 11%, 63%)';
+
+    
+  }
+
+  
+
 }
