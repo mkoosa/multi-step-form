@@ -7,7 +7,6 @@ const ARCADE_COST_ID = "arcCostId";
 const ADVANCED_COST_ID = "advCostId";
 const PRO_COST_ID = "proCostId";
 
-const OPTION_BONUS_CLASS = ".option_bonus";
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
 
@@ -16,10 +15,10 @@ class Plans extends Common {
     super();
     let _switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
+    this.createEmptyOptionContent();
     this.bindToElements();
     this.setCosts();
     this.setListeners();
-    
   }
 
   bindToElements() {
@@ -31,7 +30,9 @@ class Plans extends Common {
   }
 
   setCosts() {
-    if (this.switcher.choiceOptions.month) {
+    this.matchOptionContent();
+    
+    if (this.switcher.selectedOption.month) {
       this.arcadeCost.innerText = `${Costs.arcade.month}/mo`;
       this.advancedCost.innerText = Costs.advanced.month;
       this.proCost.innerText = Costs.pro.month;
@@ -43,10 +44,10 @@ class Plans extends Common {
   }
 
   chooseOption = (e) => {
-
     this.removeClass(e);
     const option = e.target.closest(OPTION_ELEMENT_CLASS);
     option.classList.add(ACTIVE_CLASS);
+    this.matchOptionContent();
   };
 
   removeClass(e) {
@@ -58,8 +59,34 @@ class Plans extends Common {
   setListeners() {
     this.switcher.box.addEventListener("click", () => this.setCosts());
     this.options.forEach((option) => {
-      option.addEventListener("click", this.chooseOption);
+      option.addEventListener("click", (e) => {
+        this.chooseOption(e);
+      });
     });
+  }
+
+  createEmptyOptionContent() {
+    this.content = {
+      name: null,
+      option: null,
+    };
+  }
+
+  setOptionContent(name, option) {
+    this.content.name = name;
+    this.content.option = option;
+  }
+
+  matchOptionContent() {
+    this.options.forEach((option) => {
+      if (option.classList.contains(ACTIVE_CLASS)) {
+        this.setOptionContent(
+          Costs[option.dataset.name],
+          this.switcher.selectedOption
+        );
+      }
+    });
+    console.log(this.content);
   }
 }
 
