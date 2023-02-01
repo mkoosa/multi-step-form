@@ -17,7 +17,7 @@ export default class Switch extends Common {
     super(elementId);
     this.options();
     this.chooseOption();
-    this.choiceOptions = { month: false, year: false };
+    this.selectedOption = { monthly: false, yearly: true };
     this.bonusElements = document.querySelectorAll(OPTION_BONUS_CLASS);
   }
 
@@ -28,11 +28,12 @@ export default class Switch extends Common {
     this.box = this.bindToElement(BOX_ID);
   }
 
-  chooseOption() {
+  chooseOption () {
     this.box.addEventListener("click", (e) => this.change(e));
   }
 
   change(e) {
+
     let switcher = e.target;
     let styles = window.getComputedStyle(switcher);
     let position = styles.justifyContent;
@@ -50,13 +51,13 @@ export default class Switch extends Common {
 
   saveChoiceOption(value) {
     if (value === MONTHLY_POS) {
-      this.choiceOptions.month = true;
-      this.choiceOptions.year = false;
+      this.selectedOption.monthly = true;
+      this.selectedOption.yearly = false;
       this.activateBonus(true);
       return;
     }
-    this.choiceOptions.year = true;
-    this.choiceOptions.month = false;
+    this.selectedOption.yearly = true;
+    this.selectedOption.monthly = false;
     this.activateBonus(false);
   }
 
