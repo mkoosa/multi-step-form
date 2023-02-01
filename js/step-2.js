@@ -8,6 +8,8 @@ const ADVANCED_COST_ID = "advCostId";
 const PRO_COST_ID = "proCostId";
 
 const OPTION_BONUS_CLASS = ".option_bonus";
+const OPTION_ELEMENT_CLASS = ".option";
+const ACTIVE_CLASS = "active";
 
 class Plans extends Common {
   constructor() {
@@ -16,6 +18,8 @@ class Plans extends Common {
     this.getSwitcher = () => _switcher;
     this.bindToElements();
     this.setCosts();
+    this.setListeners();
+    
   }
 
   bindToElements() {
@@ -23,7 +27,7 @@ class Plans extends Common {
     this.advancedCost = this.bindToElement(ADVANCED_COST_ID);
     this.proCost = this.bindToElement(PRO_COST_ID);
     this.switcher = this.getSwitcher();
-    this.switcher.box.addEventListener("click", () => this.setCosts());
+    this.options = document.querySelectorAll(OPTION_ELEMENT_CLASS);
   }
 
   setCosts() {
@@ -37,7 +41,26 @@ class Plans extends Common {
       this.proCost.innerText = Costs.pro.year;
     }
   }
+
+  chooseOption = (e) => {
+
+    this.removeClass(e);
+    const option = e.target.closest(OPTION_ELEMENT_CLASS);
+    option.classList.add(ACTIVE_CLASS);
+  };
+
+  removeClass(e) {
+    let activeEl = e.target;
+    this.options.forEach((option) => option.classList.remove(ACTIVE_CLASS));
+    activeEl.classList.add(ACTIVE_CLASS);
+  }
+
+  setListeners() {
+    this.switcher.box.addEventListener("click", () => this.setCosts());
+    this.options.forEach((option) => {
+      option.addEventListener("click", this.chooseOption);
+    });
+  }
 }
 
 const plans = new Plans();
-

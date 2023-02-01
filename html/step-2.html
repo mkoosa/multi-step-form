@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="wrapper d-row">
+    <div class="wrapper d-row" id="wrapper">
         <!-- sidebar  -->
         <div class="sidebar">
             <ul class="sidebar__mobile d-row">
@@ -69,7 +69,8 @@
                         <img class="option__img" src="../assets/images/icon-arcade.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Arcade</h3>
-                            <p class="option__cost">$90/yr</p>
+                            <!-- <p class="option__cost">$<span id="arcCostId">90</span>/yr</p> -->
+                            <p class="option__cost">$<span id="arcCostId"></span></p>
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -77,7 +78,7 @@
                         <img class="option__img" src="../assets/images/icon-advanced.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Advanced</h3>
-                            <p class="option__cost">$120/yr</p>
+                            <p class="option__cost">$<span id="advCostId">120</span>/yr</p>
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -85,7 +86,7 @@
                         <img class="option__img" src="../assets/images/icon-pro.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Pro</h3>
-                            <p class="option__cost">$150/yr</p>
+                            <p class="option__cost">$<span id="proCostId">150</span>/yr</p>
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -93,11 +94,11 @@
                 <!-- end of options  -->
 
                 <div class="switch d-row">
-                    <p class="switch__option"> Monthly</p>
-                    <div class="switch__box d-row" tabindex="0">
-                        <div class="switch__circle"></div>
+                    <p class="switch__option" id="monthId"> Monthly</p>
+                    <div class="switch__box d-row" tabindex="0" id="boxId">
+                        <div class="switch__circle" id="switcherId"></div>
                     </div>
-                    <p class="switch__option active">Yearly</p>
+                    <p class="switch__option" id="yearId">Yearly</p>
                 </div>
                 <div class="d-row nav">
                     <p><a class="go-back go-back--desktop" href="#">go back</a></p>
@@ -114,5 +115,7 @@
         </footer>
         <!-- end of footer  -->
     </div>
+    <script src="../js/step-2.js" type="module"></script>
+
 </body>
 </html>
