@@ -1,6 +1,7 @@
 import Common from "./Common.esm.js";
 import Switch from "./Switcher.esm.js";
 import Costs from "./index.js";
+import NextBtn from "./NextBtn.esm.js";
 
 const SWITCHER_ID = "switcherId";
 const ARCADE_COST_ID = "arcCostId";
@@ -9,6 +10,8 @@ const PRO_COST_ID = "proCostId";
 
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
+
+const NEXT_STEP = 'https://www.google.pl/'
 
 class Plans extends Common {
   constructor() {
@@ -27,11 +30,12 @@ class Plans extends Common {
     this.proCost = this.bindToElement(PRO_COST_ID);
     this.switcher = this.getSwitcher();
     this.options = document.querySelectorAll(OPTION_ELEMENT_CLASS);
+    this.nextBtn = new NextBtn();
+    console.log(this.nextBtn);
   }
 
   setCosts() {
     this.matchOptionContent();
-    
     if (this.switcher.selectedOption.month) {
       this.arcadeCost.innerText = `${Costs.arcade.month}/mo`;
       this.advancedCost.innerText = Costs.advanced.month;
@@ -86,8 +90,13 @@ class Plans extends Common {
         );
       }
     });
-    console.log(this.content);
+    if (this.content.option) {
+      this.nextBtn.setListener(NEXT_STEP);
+    }
   }
 }
 
 const plans = new Plans();
+
+
+

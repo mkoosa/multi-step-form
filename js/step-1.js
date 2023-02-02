@@ -1,5 +1,5 @@
 import Loader from "./Loader.esm.js";
-
+// debugger
 //validation form
 
 const SUCCESS_COLOR = "#198754";
@@ -8,7 +8,9 @@ const NAME_INPUT_ID = "formName";
 const PHONE_INPUT_ID = "phoneNumber";
 const EMAIL_INPUT_ID = "formEmail";
 const LOADER_ID = "loaderId";
-const WRAPPER_ID = 'wrapper' 
+const WRAPPER_ID = "wrapper";
+
+const NEXT_PAGE = `./step-2.html`;
 
 const INPUTS = document.querySelectorAll(".form-control");
 const NUMBER_INPUT = document.getElementById(PHONE_INPUT_ID);
@@ -17,7 +19,7 @@ const NAME_INPUT = document.getElementById(NAME_INPUT_ID);
 const WRAPPER = document.getElementById(WRAPPER_ID);
 
 const DISPLAY = "display";
-const BLUR = 'blur'
+const BLUR = "blur";
 
 let nameFlag = false;
 let emailFlag = false;
@@ -119,18 +121,21 @@ function checkNumber(e) {
   }
 }
 
-NUMBER_INPUT.addEventListener("keyup", (e) => {
-  checkNumber(e);
-  checkInputsFlags();
-});
-EMAIL_INPUT.addEventListener("keyup", (e) => {
-  checkEmail(e);
-  checkInputsFlags();
-});
-NAME_INPUT.addEventListener("keyup", (e) => {
-  checkName(e);
-  checkInputsFlags();
-});
+if (NUMBER_INPUT && EMAIL_INPUT && NAME_INPUT) {
+  NUMBER_INPUT.addEventListener("keyup", (e) => {
+    console.log;
+    checkNumber(e);
+    checkInputsFlags();
+  });
+  EMAIL_INPUT.addEventListener("keyup", (e) => {
+    checkEmail(e);
+    checkInputsFlags();
+  });
+  NAME_INPUT.addEventListener("keyup", (e) => {
+    checkName(e);
+    checkInputsFlags();
+  });
+}
 
 function showHideComment(element, value) {
   if (!value) {
@@ -165,14 +170,16 @@ function checkInputsFlags() {
   return nameFlag && emailFlag && numberFlag ? true : false;
 }
 
-function nextStep() {
-  WRAPPER.classList.add(BLUR)
+const nextStep = () => {
+  WRAPPER.classList.add(BLUR);
   const loader = new Loader(LOADER_ID);
   loader.addClass(DISPLAY);
   setTimeout(() => {
-    window.location.href = `./step-2.html`;
+    window.location.href = NEXT_PAGE;
     loader.removeClass(DISPLAY);
     clearInputs();
-    WRAPPER.classList.remove(BLUR)
+    WRAPPER.classList.remove(BLUR);
   }, 2000);
-}
+};
+
+
