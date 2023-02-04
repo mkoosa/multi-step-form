@@ -11,7 +11,7 @@ const PRO_COST_ID = "proCostId";
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
 
-const NEXT_STEP = 'https://www.google.pl/'
+const NEXT_STEP = '/html/step-3.html'
 
 class Plans extends Common {
   constructor() {
@@ -31,7 +31,6 @@ class Plans extends Common {
     this.switcher = this.getSwitcher();
     this.options = document.querySelectorAll(OPTION_ELEMENT_CLASS);
     this.nextBtn = new NextBtn();
-    console.log(this.nextBtn);
   }
 
   setCosts() {
