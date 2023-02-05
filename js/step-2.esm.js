@@ -11,7 +11,7 @@ const PRO_COST_ID = "proCostId";
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
 
-const NEXT_STEP = '/html/step-3.html'
+const NEXT_STEP = "/html/step-3.html";
 
 class Plans extends Common {
   constructor() {
@@ -95,7 +95,4 @@ class Plans extends Common {
   }
 }
 
-export const plans = new Plans();
-
-
-
+const plans = new Plans();

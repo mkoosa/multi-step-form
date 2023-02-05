@@ -18,7 +18,6 @@ export default class NextBtn extends Common {
     this.buttons = document.querySelectorAll(NEXT_BTN_CLASS);
     this.wrapper = this.bindToElement(WRAPPER_ID);
     this.loader = new Loader(LOADER_ID);
-    console.log(this.loader);
   }
 
   setListener(value) {
@@ -27,7 +26,7 @@ export default class NextBtn extends Common {
     );
   }
 
-  nextStep = (next) => {
+  nextStep =(next)=> {
     this.wrapper.classList.add(BLUR);
     this.loader.addClass(DISPLAY);
 
@@ -35,6 +34,7 @@ export default class NextBtn extends Common {
       window.location.href = next;
       this.loader.removeClass(DISPLAY);
       this.wrapper.classList.remove(BLUR);
+    
     }, 1000);
   };
 }
