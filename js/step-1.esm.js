@@ -1,8 +1,7 @@
 import Loader from "./Loader.esm.js";
-// debugger
+
 //validation form
 
-const SUCCESS_COLOR = "#198754";
 const NUMBER_LENGTH = 8;
 const NAME_INPUT_ID = "formName";
 const PHONE_INPUT_ID = "phoneNumber";
@@ -164,9 +163,7 @@ function clearInputs() {
 }
 
 // is next step allow
-
 function checkInputsFlags() {
-  console.log(nameFlag, emailFlag, numberFlag);
   return nameFlag && emailFlag && numberFlag ? true : false;
 }
 

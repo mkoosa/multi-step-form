@@ -95,7 +95,7 @@ class Plans extends Common {
   }
 }
 
-const plans = new Plans();
+export const plans = new Plans();
 
 
 
