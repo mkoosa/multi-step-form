@@ -15,4 +15,6 @@ export default class Common {
     this.element.classList.remove(className);
     
   }
+
+  
 }
