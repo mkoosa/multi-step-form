@@ -1,48 +1,65 @@
 import Common from "./Common.esm.js";
 
 const OPTION_ELEMENT_CLASS = ".option";
-const OPTION_COST_ELEMENT_CLASS = '.option__cost';
+const OPTION_COST_ELEMENT_CLASS = ".option__cost";
 const ACTIVE_CLASS = "active";
 
-export default class SefOptions extends Common {
+export default class SetOptions extends Common {
   constructor(ELEMENT_ID, OPTION_ELEMENT, OPTION_COST) {
     super(ELEMENT_ID);
     this.getOptionCostElements();
     this.options = document.querySelectorAll(OPTION_ELEMENT);
+    console.log(this.options);
     this.costs = document.querySelectorAll(OPTION_COST);
-    this.change = true;
+    this.visibility = true;
     this.setListeners();
   }
-  
+
   setListeners() {
     this.options.forEach((option) =>
-    option.addEventListener("click", (e) => {
-      console.log(e.target);
-      console.log("choose option");
-      this.selectOption(e);
-    })
+      option.addEventListener("click", (e) => {
+        this.selectOption(e);
+      })
     );
   }
-  
+
   getOptionCostElements() {
     this.optionsCost = document.querySelectorAll(OPTION_COST_ELEMENT_CLASS);
-  };
+  }
 
   selectOption = (e) => {
     const option = e.target.closest(OPTION_ELEMENT_CLASS);
-    if (this.change) {
-      this.removeClass(e);
-      option.classList.add(ACTIVE_CLASS);
-      
-    } else {
-      option.classList.add(ACTIVE_CLASS);
-      
-    };
+    this.addClass(option, this.visibility);
   };
 
-  removeClass(e) {
-    let activeEl = e.target;
+  addClass(element, target) {
+    if (target) {
+      this.removeClass();
+      element.classList.add(ACTIVE_CLASS);
+    } else {
+      element.classList.add(ACTIVE_CLASS);
+    }
+  }
+
+  activeClass() {
+    let active = false;
+    this.options.forEach((option) => {
+      if (option.classList.contains(ACTIVE_CLASS)) {
+        active = true;
+        return;
+      }
+    });
+    return active;
+  }
+
+  removeClass() {
     this.options.forEach((option) => option.classList.remove(ACTIVE_CLASS));
-    activeEl.classList.add(ACTIVE_CLASS);
   }
 }
+
+
+function kocica() {
+  return 'dwie kocice'
+}
+
+console.log(kocica());
