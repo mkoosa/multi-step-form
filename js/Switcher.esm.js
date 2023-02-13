@@ -17,7 +17,7 @@ export default class Switch extends Common {
     super(elementId);
     this.options();
     this.chooseOption();
-    this.selectedOption = { monthly: false, yearly: true };
+    this.selectedOption = { month: false, year: true };
     this.bonusElements = document.querySelectorAll(OPTION_BONUS_CLASS);
   }
 
@@ -51,13 +51,13 @@ export default class Switch extends Common {
 
   saveChoiceOption(value) {
     if (value === MONTHLY_POS) {
-      this.selectedOption.monthly = true;
-      this.selectedOption.yearly = false;
+      this.selectedOption.month = true;
+      this.selectedOption.year = false;
       this.activateBonus(true);
       return;
     }
-    this.selectedOption.yearly = true;
-    this.selectedOption.monthly = false;
+    this.selectedOption.year = true;
+    this.selectedOption.month = false;
     this.activateBonus(false);
   }
 
