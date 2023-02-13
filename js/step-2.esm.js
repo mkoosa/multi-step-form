@@ -1,37 +1,36 @@
 import Common from "./Common.esm.js";
 import Switch from "./Switcher.esm.js";
-import Costs from "./index.js";
 import NextBtn from "./NextBtn.esm.js";
-import { SetOfOptions } from "./SetOfOptions.esm.js";
+import Costs from "./Costs.esm.js";
+import SetOptions from "./SetOptions.esm.js";
 
 const SWITCHER_ID = "switcherId";
-const ARCADE_COST_ID = "arcCostId";
-const ADVANCED_COST_ID = "advCostId";
-const PRO_COST_ID = "proCostId";
+const ARCADE_COST_ID = "arcade";
+const ADVANCED_COST_ID = "advanced";
+const PRO_COST_ID = "pro";
 const WRAPPER_ID = "wrapper";
-
 const ELEMENT_ID = "optionsId";
-
 const OPTION_ELEMENT_CLASS = ".option";
 const OPTION_COST_CLASS = ".option__cost";
-const ACTIVE_CLASS = "active";
-
 const NEXT_STEP = "/html/step-3.html";
 
 export class Plans extends Common {
   constructor(elementId) {
     super(elementId);
-    this.setOfOptions = new SetOfOptions(
+    this.setOptions = new SetOptions(
       ELEMENT_ID,
       OPTION_ELEMENT_CLASS,
       OPTION_COST_CLASS
     );
+    this.nextBtn = new NextBtn();
+    console.log(this.nextBtn);
+    this.costs = new Costs(OPTION_COST_CLASS);
     let _switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
-    this.createEmptyOptionContent();
     this.bindToElements();
-    this.setCosts();
+    this.setPrices();
     this.setListeners();
+    this.next = false;
   }
 
   bindToElements() {
@@ -39,54 +38,24 @@ export class Plans extends Common {
     this.advancedCost = this.bindToElement(ADVANCED_COST_ID);
     this.proCost = this.bindToElement(PRO_COST_ID);
     this.switcher = this.getSwitcher();
-    this.nextBtn = new NextBtn();
   }
 
-  setCosts() {
-    this.matchOptionContent();
-    if (this.switcher.selectedOption.monthly) {
-      this.arcadeCost.innerText = `${Costs.arcade.month}/mo`;
-      this.advancedCost.innerText = Costs.advanced.month;
-      this.proCost.innerText = Costs.pro.month;
-    } else {
-      this.arcadeCost.innerText = `${Costs.arcade.year}/yr`;
-      this.advancedCost.innerText = Costs.advanced.year;
-      this.proCost.innerText = Costs.pro.year;
-    };
-  };
+  setPrices() {
+    this.costs.setPrice(this.switcher.selectedOption.monthly);
+  }
 
   setListeners() {
-    this.switcher.box.addEventListener("click", () => this.setCosts());
-    this.setOfOptions.options.forEach((option) => {
-      option.addEventListener("click", () => this.matchOptionContent());
-    });
+    this.switcher.box.addEventListener("click", () => this.setPrices());
+    this.setOptions.options.forEach((option) =>
+      option.addEventListener("click", () => this.isAllowedNextStep())
+    );
   }
 
-  createEmptyOptionContent() {
-    this.content = {
-      name: null,
-      option: null,
-    };
+  isAllowedNextStep() {
+    this.next = this.setOptions.activeClass();
+    this.next ? this.nextBtn.setListener(NEXT_STEP) : false;
   }
 
-  setOptionContent(name, option) {
-    this.content.name = name;
-    this.content.option = option;
-  }
-
-  matchOptionContent() {
-    this.setOfOptions.options.forEach((option) => {
-      if (option.classList.contains(ACTIVE_CLASS)) {
-        this.setOptionContent(
-          Costs[option.dataset.name],
-          this.switcher.selectedOption
-        );
-      }
-    });
-    if (this.content.option) {
-      this.nextBtn.setListener(NEXT_STEP);
-    }
-  }
 }
 
 const plans = new Plans(WRAPPER_ID);
