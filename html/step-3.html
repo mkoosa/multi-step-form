@@ -41,21 +41,21 @@
                     <p class="desktop-element__number">2</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 2</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">select plan</p>
                     </div>
                 </div>
                 <div class="desktop-element d-row">
                     <p class="desktop-element__number side-act">3</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 3</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">add-ons</p>
                     </div>
                 </div>
                 <div class="desktop-element d-row">
                     <p class="desktop-element__number">4</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 4</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">summary</p>
                     </div>
                 </div>
             </div>
@@ -65,36 +65,42 @@
         <!-- select  -->
         <div class="select">
             <div class="select__wrapper">
-                <h1 class="select__heading">PIck add-ons</h1>
+                <h1 class="select__heading">Pick add-ons</h1>
                 <p class="select__text">Add-ons help enhance your gaming experience</p>
 
                 <!-- options  -->
-                <div id="inputPreview" class="options">
-                    <div class="option d-row" tabindex="0" data-name="arcade">
-                        <input name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
-                        <label for="demo_opt_1"></label>
-                        <div class="option__content">
-                            <label for="service" class="option__name">Online service</label>
-                            <p class="option__details">Access to multiplayer games</p>
-                        </div>
+                <div class="options" id="optionsId">
+                    <div class="option d-row" tabindex="0" data-name="online">
+                        <label class="label">
+                            <div class="option__content">
+                                <p class="option__name">Online service</p>
+                                <p class="option__bonus">Access to multiplayer games</p>
+                            </div>
+                          <input type="checkbox" id="checkboxId">
+                          <span class="checkmark"></span>
+                        </label>
                         <p class="option__cost">+$<span>1</span>/mo</p>
                     </div>
-                    <div class="option d-row" tabindex="0" data-name="arcade">
-                        <input name="cssCheckbox" id="demo_opt_2" type="checkbox" class="css-checkbox">
-                        <label for="demo_opt_2"></label>
-                        <div class="option__content">
-                            <label for="service" class="option__name">Larger storage</label>
-                            <p class="option__details">Extra 1TB oc cloud save</p>
-                        </div>
+                    <div class="option d-row" tabindex="0" data-name="storage">
+                        <label class="label">
+                            <div class="option__content">
+                                <p class="option__name">Larger storage</p>
+                                <p class="option__bonus">Extra 1TB oc cloud save</p>
+                            </div>
+                          <input type="checkbox" id="checkboxId">
+                          <span class="checkmark"></span>
+                        </label>
                         <p class="option__cost">+$<span>2</span>/mo</p>
                     </div>
-                    <div class="option d-row" tabindex="0" data-name="arcade">
-                        <input name="cssCheckbox" id="demo_opt_3" type="checkbox" class="css-checkbox">
-                        <label for="demo_opt_3"></label>
-                        <div class="option__content">
-                            <label for="service" class="option__name">Customizable profile</label>
-                            <p class="option__details">Custom theme on your profile</p>
-                        </div>
+                    <div class="option d-row" tabindex="0" data-name="profile">
+                        <label class="label">
+                            <div class="option__content">
+                                <p class="option__name">Customizable profile</p>
+                                <p class="option__bonus">Custom theme on your profile</p>
+                            </div>
+                          <input type="checkbox" id="checkboxId">
+                          <span class="checkmark"></span>
+                        </label>
                         <p class="option__cost">+$<span>2</span>/mo</p>
                     </div>
                 </div>

@@ -41,21 +41,21 @@
                     <p class="desktop-element__number side-act">2</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 2</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">select plan</p>
                     </div>
                 </div>
                 <div class="desktop-element d-row">
                     <p class="desktop-element__number">3</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 3</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">add-ons</p>
                     </div>
                 </div>
                 <div class="desktop-element d-row">
                     <p class="desktop-element__number">4</p>
                     <div class="desktop-element__content">
                         <p class="desktop-element__step">step 4</p>
-                        <p class="desktop-element__text">your info</p>
+                        <p class="desktop-element__text">summary</p>
                     </div>
                 </div>
             </div>
@@ -69,12 +69,12 @@
                 <p class="select__text">You have the option of monthly or yearly </p>
 
                 <!-- options  -->
-                <div class="options">
+                <div class="options" id="optionsId">
                     <div class="option d-row" tabindex="0" data-name="arcade">
                         <img class="option__img" src="../assets/images/icon-arcade.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Arcade</h3>
-                            <p class="option__cost">$<span id="arcCostId"></span></p>
+                            <p class="option__cost" id="arcade"></p>
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -82,7 +82,9 @@
                         <img class="option__img" src="../assets/images/icon-advanced.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Advanced</h3>
-                            <p class="option__cost">$<span id="advCostId">120</span>/yr</p>
+                            
+                            <p class="option__cost" id="advanced"></p>
+                            
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -90,7 +92,7 @@
                         <img class="option__img" src="../assets/images/icon-pro.svg" alt="arcade option">
                         <div class="option__content">
                             <h3 class="option__name">Pro</h3>
-                            <p class="option__cost">$<span id="proCostId">150</span>/yr</p>
+                            <p class="option__cost" id="pro"></p>
                             <p class="option_bonus">2 months free</p>
                         </div>
                     </div>
@@ -120,8 +122,5 @@
         <!-- end of footer  -->
     </div>
     <script src="../js/step-2.esm.js" type="module"></script>
-
-
 </body>
-
 </html>
