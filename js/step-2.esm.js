@@ -3,6 +3,8 @@ import Switch from "./Switcher.esm.js";
 import NextBtn from "./NextBtn.esm.js";
 import Costs from "./Costs.esm.js";
 import SetOptions from "./SetOptions.esm.js";
+import User from "./User.esm.js";
+import Storage from "./Storage.esm.js";
 
 const SWITCHER_ID = "switcherId";
 const ARCADE_COST_ID = "arcade";
@@ -13,6 +15,7 @@ const ELEMENT_ID = "optionsId";
 const OPTION_ELEMENT_CLASS = ".option";
 const OPTION_COST_CLASS = ".option__cost";
 const NEXT_STEP = "/html/step-3.html";
+const key = 'user';
 
 export class Plans extends Common {
   constructor(elementId) {
@@ -23,7 +26,6 @@ export class Plans extends Common {
       OPTION_COST_CLASS
     );
     this.nextBtn = new NextBtn();
-    console.log(this.nextBtn);
     this.costs = new Costs(OPTION_COST_CLASS);
     let _switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
@@ -41,21 +43,41 @@ export class Plans extends Common {
   }
 
   setPrices() {
-    this.costs.setPrice(this.switcher.selectedOption.monthly);
+    this.costs.setPrice(this.switcher.selectedOption.month);
+    this.setOptions.removeClass();
   }
 
   setListeners() {
     this.switcher.box.addEventListener("click", () => this.setPrices());
     this.setOptions.options.forEach((option) =>
-      option.addEventListener("click", () => this.isAllowedNextStep())
+      option.addEventListener("click", (e) => this.nextStep(e))
     );
   }
 
-  isAllowedNextStep() {
+  createObjKeys(e) {
+    const name = this.setOptions.matchOptionElement(e);
+    console.log(name);
+    const obj = this.switcher.selectedOption;
+    const period = Object.keys(obj)
+      .filter((k) => obj[k])
+      .join();
+    this.createUser(name, period);
+  }
+
+  createUser(name, period) {
+    this.user = new User(name, period);
+    this.save(key, JSON.stringify(this.user.options))
+  }
+
+  nextStep(e) {
+    this.createObjKeys(e);
     this.next = this.setOptions.activeClass();
     this.next ? this.nextBtn.setListener(NEXT_STEP) : false;
   }
 
+  save(key, value) {
+    new Storage(key, value)
+  }
 }
 
 const plans = new Plans(WRAPPER_ID);
