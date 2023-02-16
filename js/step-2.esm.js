@@ -44,6 +44,7 @@ export class Plans extends Common {
 
   setPrices() {
     this.costs.setPrice(this.switcher.selectedOption.month);
+    // console.log(object);
     this.setOptions.removeClass();
   }
 
@@ -76,7 +77,8 @@ export class Plans extends Common {
   }
 
   save(key, value) {
-    new Storage(key, value)
+    let storage = new Storage()
+    storage.createStorage(key, value)
   }
 }
 
