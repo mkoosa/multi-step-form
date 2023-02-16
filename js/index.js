@@ -11,22 +11,19 @@ const prices = {
     month: 15,
     year: 150,
   },
-
-
-  service: {
+  ["online service"]: {
     month: 1,
     year: 10,
   },
-  storage: {
+
+  ["larger storage"]: {
     month: 2,
     year: 20,
   },
-  profile: {
+  ["customizable profile"]: {
     month: 2,
     year: 20,
   },
-  
 };
 
 export default prices;
-
