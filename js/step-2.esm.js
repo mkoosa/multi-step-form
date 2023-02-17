@@ -32,7 +32,6 @@ export class Plans extends Common {
     this.bindToElements();
     this.setPrices();
     this.setListeners();
-    this.next = false;
   }
 
   bindToElements() {
@@ -44,7 +43,6 @@ export class Plans extends Common {
 
   setPrices() {
     this.costs.setPrice(this.switcher.selectedOption.month);
-    // console.log(object);
     this.setOptions.removeClass();
   }
 
@@ -57,7 +55,6 @@ export class Plans extends Common {
 
   createObjKeys(e) {
     const name = this.setOptions.matchOptionElement(e);
-    console.log(name);
     const obj = this.switcher.selectedOption;
     const period = Object.keys(obj)
       .filter((k) => obj[k])
