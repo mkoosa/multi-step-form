@@ -1,7 +1,7 @@
 import Common from "./Common.esm.js";
 import Storage from "./Storage.esm.js";
 import Costs from "./Costs.esm.js";
-import User from "./User.esm.js";
+import prices from "./index.js";
 import NextBtn from "./NextBtn.esm.js";
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
@@ -9,6 +9,7 @@ const OPTION_COST_CLASS = ".option__cost";
 
 const CHECKBOX_ID = "#checkboxId";
 const WRAPPER_ID = "wrapper";
+
 const KEY = "user";
 const NEXT_STEP = "/html/step-1.html";
 
@@ -58,7 +59,10 @@ class ThirdStep extends Common {
   }
   
   addAdditionalOption(option) {
-    this.addiTionalOptions.push(option);
+    let obj = {};
+    let price = prices[option][this.user.period];
+    obj[option] = price
+    this.addiTionalOptions.push(obj);
   }
   
   setPrices() {
@@ -74,7 +78,6 @@ class ThirdStep extends Common {
   }
   updateUser(value) {
     this.user.options = value;
-    console.log(this.user);
     this.save(KEY, JSON.stringify(this.user))
 
   }
