@@ -11,7 +11,7 @@ const CHECKBOX_ID = "#checkboxId";
 const WRAPPER_ID = "wrapper";
 
 const KEY = "user";
-const NEXT_STEP = "/html/step-1.html";
+const NEXT_STEP = "/html/step-4.html";
 
 class ThirdStep extends Common {
   constructor(elementId) {

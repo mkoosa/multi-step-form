@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <script src="https://kit.fontawesome.com/0ecbfc1464.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/step-4.css">
+    <title>Step 4</title>
+</head>
+
+<body>
+    <div class="lds-facebook none" id="loaderId">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="wrapper d-row" id="wrapper">
+        <!-- sidebar  -->
+        <div class="sidebar">
+            <ul class="sidebar__mobile d-row">
+                <li class="sidebar__element">1</li>
+                <li class="sidebar__element">2</li>
+                <li class="sidebar__element">3</li>
+                <li class="sidebar__element side-act">4</li>
+            </ul>
+            <div class="sidebar__desktop">
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">1</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 1</p>
+                        <p class="desktop-element__text">your info</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">2</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 2</p>
+                        <p class="desktop-element__text">select plan</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number">3</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 3</p>
+                        <p class="desktop-element__text">add-ons</p>
+                    </div>
+                </div>
+                <div class="desktop-element d-row">
+                    <p class="desktop-element__number side-act">4</p>
+                    <div class="desktop-element__content">
+                        <p class="desktop-element__step">step 4</p>
+                        <p class="desktop-element__text">summary</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of sidebar  -->
+
+        <!-- finish  -->
+        <div class="finish">
+            <div class="finish__wrapper">
+                <h1 class="finish__heading">Finishing up</h1>
+                <p class="finish__text">Double check everything looks OK before confirming </p>
+                <!-- options  -->
+                <div class="options" id="optionsId">
+                    <div class="options__container">
+                        <div class="option option--change d-row">
+                            <div class="option__content ">
+                                <p class="option__name option__name--dark" id="changeableOptId"></p>
+                                <p class="option__change" tabindex="0" id="changeId">change</p>
+                            </div>
+                            <p class="option__cost option__cost--bold" id="changeablePriceId"></p>
+                        </div>
+                        <div class="option option-add" id="optionAddId">
+                        </div>
+                    </div>
+                    <div class="option option-summary">
+                        <div class="option__content d-row">
+                            <p class="option__total">total (per <span id="timePeriodId"></span>)</p>
+                            <p class="option__total-cost"><span id="totalCostId"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of options  -->
+                <div class="d-row nav">
+                    <p><a class="go-back go-back--desktop" href="#">go back</a></p>
+                    <button type="submit" class="next-btn next-btn--desktop">Confirm</button>
+                </div>
+            </div>
+            <div class="finish__wrapper last">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/icon-thank-you.svg" alt="ok icon" class="last__icon">
+                </div>
+                <h1 class="last__heading">Thank you!</h1>
+                <p class="last__text"> Thanks for confirming your subscription! We hope you have fun
+                    using our platform. If you ever need support, please feel free
+                    to email us at support@loremgaming.com.</p>
+            </div>
+        </div>
+    </div>
+    <!-- end of finish  -->
+    
+    <!-- footer  -->
+    <footer class="footer d-row">
+        <p><a class="go-back" href="#">go back</a></p>
+        <button type="submit" class="next-btn next-btn--mobile">Confirm</button>
+    </footer>
+    <!-- end of footer  -->
+
+    </div>
+    <script src="../js/step-4.esm.js" type="module"></script>
+</body>
+
+</html>
