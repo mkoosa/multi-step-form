@@ -28,6 +28,7 @@ export default class NextBtn extends Common {
   }
 
   nextStep = (next) => {
+    console.log('next');
     this.wrapper.classList.add(BLUR);
     this.loader.addClass(DISPLAY);
 
