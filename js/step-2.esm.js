@@ -64,7 +64,7 @@ export class Plans extends Common {
 
   createUser(name, period) {
     this.user = new User(name, period);
-    this.save(key, JSON.stringify(this.user.options))
+    this.save(key, this.user.options)
   }
 
   nextStep(e) {

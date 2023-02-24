@@ -78,7 +78,7 @@ class ThirdStep extends Common {
   }
   updateUser(value) {
     this.user.options = value;
-    this.save(KEY, JSON.stringify(this.user))
+    this.save(KEY, this.user)
 
   }
   save(key, value) {
