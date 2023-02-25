@@ -10,13 +10,12 @@ const BLUR = "blur";
 
 const WRAPPER = document.getElementById(WRAPPER_ID);
 export default class NextBtn extends Common {
-  constructor(elementId) {
-    super(elementId);
+  constructor() {
+    super();
     this.bindElements();
   }
   bindElements() {
     this.buttons = document.querySelectorAll(NEXT_BTN_CLASS);
-    
     this.wrapper = this.bindToElement(WRAPPER_ID);
     this.loader = new Loader(LOADER_ID);
   }
