@@ -1,34 +1,33 @@
 import Common from "./Common.esm.js";
 import Loader from "./Loader.esm.js";
-
-const NEXT_BTN_CLASS = ".next-btn";
 const LOADER_ID = "loaderId";
 const WRAPPER_ID = "wrapper";
-
 const DISPLAY = "display";
 const BLUR = "blur";
-
-const WRAPPER = document.getElementById(WRAPPER_ID);
+const STATE = "state";
 export default class NextBtn extends Common {
-  constructor(value) {
+  constructor(value, btn) {
     super();
     this.step = value;
+    this.btn = btn;
     this.bindElements();
+    this.setListener();
   }
+
   bindElements() {
-    this.buttons = document.querySelectorAll(NEXT_BTN_CLASS);
+    this.buttons = document.querySelectorAll(this.btn);
     this.wrapper = this.bindToElement(WRAPPER_ID);
     this.loader = new Loader(LOADER_ID);
   }
 
-  setListener(value) {
-    console.log(value);
+  setListener() {
     this.buttons.forEach((button) =>
       button.addEventListener("click", () => this.nextStep(this.step))
     );
   }
 
   nextStep = (next) => {
+    if (next === STATE) return;
     this.wrapper.classList.add(BLUR);
     this.loader.addClass(DISPLAY);
     setTimeout(() => {
