@@ -2,7 +2,6 @@ import Common from "./Common.esm.js";
 const OPTION_ELEMENT_CLASS = ".option";
 const OPTION_COST_ELEMENT_CLASS = ".option__cost";
 const ACTIVE_CLASS = "active";
-
 export default class SetOptions extends Common {
   constructor(ELEMENT_ID, OPTION_ELEMENT, OPTION_COST) {
     super(ELEMENT_ID);
@@ -36,18 +35,7 @@ export default class SetOptions extends Common {
       element.classList.add(ACTIVE_CLASS);
     } else {
       element.classList.add(ACTIVE_CLASS);
-    }
-  }
-
-  activeClass() {
-    let active = false;
-    this.options.forEach((option) => {
-      if (option.classList.contains(ACTIVE_CLASS)) {
-        active = true;
-        return;
-      }
-    });
-    return active;
+    };
   }
 
   removeClass() {
