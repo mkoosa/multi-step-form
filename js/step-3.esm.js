@@ -3,6 +3,7 @@ import Storage from "./Storage.esm.js";
 import Costs from "./Costs.esm.js";
 import prices from "./index.js";
 import NextBtn from "./NextBtn.esm.js";
+import BackBtn from './Back.esm.js';
 
 const OPTION_ELEMENT_CLASS = ".option";
 const ACTIVE_CLASS = "active";
@@ -10,14 +11,17 @@ const OPTION_COST_CLASS = ".option__cost";
 const CHECKBOX_ID = "#checkboxId";
 const WRAPPER_ID = "wrapper";
 const KEY = "user";
+const BACK_BTN_CLASS = ".go-back";
+const BACK_STEP = "/html/step-2.html";
 const NEXT_STEP = "/html/step-4.html";
+const NEXT_BTN_CLASS = ".next-btn";
 
 class ThirdStep extends Common {
   constructor(elementId) {
     super(elementId);
     this.user = null;
     this.costs = new Costs(OPTION_COST_CLASS);
-    this.nextBtn = new NextBtn(NEXT_STEP);
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS);
     this.bindToElements();
     this.setListeners();
     this.getPeriodTime();
@@ -58,6 +62,7 @@ class ThirdStep extends Common {
   }
   
   addAdditionalOption(option) {
+    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
     let obj = {};
     let price = prices[option][this.user.period];
     obj[option] = price
@@ -69,6 +74,7 @@ class ThirdStep extends Common {
   }
   
   nextStep() {
+    console.log(this.nextBtn);
     this.addiTionalOptions.length ? this.nextBtn.setListener(NEXT_STEP) : false;
   }
   

@@ -1,6 +1,7 @@
 import Common from "./Common.esm.js";
 import Storage from "./Storage.esm.js";
 import NextBtn from "./NextBtn.esm.js";
+import BackBtn from './Back.esm.js';
 
 const WRAPPER_ID = "wrapper";
 const CHANGEABLE_OPT_ID = "changeableOptId";
@@ -11,13 +12,14 @@ const OPTION_PRICE__ID = "optionPriceId";
 const TIME_PERIOD_ID = "timePeriodId";
 const TOTAL_COST_ID = "totalCostId";
 const OPTION_EL_ID = "optionId";
-
 const BASKET_CLASS = ".fa-trash";
 const OPTION_CONTENT_CLASS = ".option__content";
 const FINISH_WRAPPER_CLASS = ".finish__wrapper";
 const LAST_FINISH_WRAPPER_CLASS = ".finish__wrapper--last";
+const BACK_BTN_CLASS = ".go-back";
+const BACK_STEP = "/html/step-3.html";
+const NEXT_BTN_CLASS = ".next-btn";
 const ACTIVE = "active";
-const LAST = ".last";
 const KEY = "user";
 const STATE = "state";
 
@@ -26,7 +28,8 @@ class Finish extends Common {
     super(elementId);
     this.bindToElements();
     this.storage = new Storage();
-    this.nextBtn = new NextBtn();
+    this.nextBtn = new NextBtn(STATE, NEXT_BTN_CLASS);
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS);
     this.getUserOptions();
     this.setUserOptions();
     this.insertAddOptions();

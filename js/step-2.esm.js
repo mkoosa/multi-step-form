@@ -15,7 +15,9 @@ const WRAPPER_ID = "wrapper";
 const ELEMENT_ID = "optionsId";
 const OPTION_ELEMENT_CLASS = ".option";
 const OPTION_COST_CLASS = ".option__cost";
+const NEXT_BTN_CLASS = ".next-btn";
 const NEXT_STEP = "/html/step-3.html";
+const BACK_BTN_CLASS = ".go-back";
 const BACK_STEP = "/html/step-1.html";
 const key = 'user';
 
@@ -27,8 +29,7 @@ export class Plans extends Common {
       OPTION_ELEMENT_CLASS,
       OPTION_COST_CLASS
     );
-    this.nextBtn = new NextBtn(NEXT_STEP);
-    this.backBtn = new BackBtn(BACK_STEP);
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS);
     this.costs = new Costs(OPTION_COST_CLASS);
     let _switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
@@ -73,8 +74,7 @@ export class Plans extends Common {
 
   nextStep(e) {
     this.createObjKeys(e);
-    this.next = this.setOptions.activeClass();
-    this.next ? this.nextBtn.setListener(NEXT_STEP) : false;
+    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
   }
 
   save(key, value) {
