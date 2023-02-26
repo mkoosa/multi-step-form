@@ -10,8 +10,9 @@ const BLUR = "blur";
 
 const WRAPPER = document.getElementById(WRAPPER_ID);
 export default class NextBtn extends Common {
-  constructor() {
+  constructor(value) {
     super();
+    this.step = value;
     this.bindElements();
   }
   bindElements() {
@@ -21,16 +22,15 @@ export default class NextBtn extends Common {
   }
 
   setListener(value) {
+    console.log(value);
     this.buttons.forEach((button) =>
-      button.addEventListener("click", () => this.nextStep(value))
+      button.addEventListener("click", () => this.nextStep(this.step))
     );
   }
 
   nextStep = (next) => {
-    console.log('next');
     this.wrapper.classList.add(BLUR);
     this.loader.addClass(DISPLAY);
-
     setTimeout(() => {
       window.location.href = next;
       this.loader.removeClass(DISPLAY);

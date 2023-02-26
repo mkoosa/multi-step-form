@@ -5,6 +5,7 @@ import Costs from "./Costs.esm.js";
 import SetOptions from "./SetOptions.esm.js";
 import User from "./User.esm.js";
 import Storage from "./Storage.esm.js";
+import BackBtn from './Back.esm.js'
 
 const SWITCHER_ID = "switcherId";
 const ARCADE_COST_ID = "arcade";
@@ -15,6 +16,7 @@ const ELEMENT_ID = "optionsId";
 const OPTION_ELEMENT_CLASS = ".option";
 const OPTION_COST_CLASS = ".option__cost";
 const NEXT_STEP = "/html/step-3.html";
+const BACK_STEP = "/html/step-1.html";
 const key = 'user';
 
 export class Plans extends Common {
@@ -25,7 +27,8 @@ export class Plans extends Common {
       OPTION_ELEMENT_CLASS,
       OPTION_COST_CLASS
     );
-    this.nextBtn = new NextBtn();
+    this.nextBtn = new NextBtn(NEXT_STEP);
+    this.backBtn = new BackBtn(BACK_STEP);
     this.costs = new Costs(OPTION_COST_CLASS);
     let _switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
@@ -54,6 +57,7 @@ export class Plans extends Common {
   }
 
   createObjKeys(e) {
+    console.log(e);
     const name = this.setOptions.matchOptionElement(e);
     const obj = this.switcher.selectedOption;
     const period = Object.keys(obj)

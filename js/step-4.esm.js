@@ -14,11 +14,12 @@ const OPTION_EL_ID = "optionId";
 
 const BASKET_CLASS = ".fa-trash";
 const OPTION_CONTENT_CLASS = ".option__content";
-const FINISH_WRAPPER_CLASS = '.finish__wrapper'
-const LAST_FINISH_WRAPPER_CLASS = '.finish__wrapper--last'
+const FINISH_WRAPPER_CLASS = ".finish__wrapper";
+const LAST_FINISH_WRAPPER_CLASS = ".finish__wrapper--last";
 const ACTIVE = "active";
-const LAST = '.last'
+const LAST = ".last";
 const KEY = "user";
+const STATE = "state";
 
 class Finish extends Common {
   constructor(elementId) {
@@ -26,12 +27,11 @@ class Finish extends Common {
     this.bindToElements();
     this.storage = new Storage();
     this.nextBtn = new NextBtn();
-    console.log(this.nextBtn);
     this.getUserOptions();
     this.setUserOptions();
     this.insertAddOptions();
     this.setTotal();
-    this.confirmation()
+    this.confirmation();
     this.setListener();
     this.setTotalOptionsCost();
   }
@@ -163,22 +163,22 @@ class Finish extends Common {
     this.totalOptionsCost(this.userOptions.options);
     this.optionsCost();
     this.setTotalOptionsCost();
-    this.storage.createStorage(KEY, this.userOptions)
-    
+    this.storage.createStorage(KEY, this.userOptions);
   }
 
   confirmation() {
     this.nextBtn.buttons.forEach((button) =>
-    button.addEventListener("click", this.finish)
-  );
+      button.addEventListener("click", this.finish)
+    );
   }
 
-  finish() {
-    document.querySelector(FINISH_WRAPPER_CLASS).style.display = 'none';
-    document.querySelector(LAST_FINISH_WRAPPER_CLASS).style.display = 'block';
-    document.querySelector('footer').style.display = 'none';
-  }
+  finish = () => {
+    const finishWrapper = document.querySelector(FINISH_WRAPPER_CLASS);
+    const lastFinishWrapper = document.querySelector(LAST_FINISH_WRAPPER_CLASS);
+    lastFinishWrapper.style.display = "block";
+    finishWrapper.style.display = "none";
+    document.querySelector("footer").style.display = "none";
+  };
 }
 
 const finish = new Finish(WRAPPER_ID);
-
