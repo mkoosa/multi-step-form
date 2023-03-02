@@ -1,24 +1,22 @@
 import Loader from "./Loader.esm.js";
+import Storage from "./Storage.esm.js";
 
 //validation form
-
 const NUMBER_LENGTH = 8;
 const NAME_INPUT_ID = "formName";
 const PHONE_INPUT_ID = "phoneNumber";
 const EMAIL_INPUT_ID = "formEmail";
 const LOADER_ID = "loaderId";
 const WRAPPER_ID = "wrapper";
-
 const NEXT_PAGE = `./step-2.html`;
-
 const INPUTS = document.querySelectorAll(".form-control");
 const NUMBER_INPUT = document.getElementById(PHONE_INPUT_ID);
 const EMAIL_INPUT = document.getElementById(EMAIL_INPUT_ID);
 const NAME_INPUT = document.getElementById(NAME_INPUT_ID);
 const WRAPPER = document.getElementById(WRAPPER_ID);
-
 const DISPLAY = "display";
 const BLUR = "blur";
+const KEY = "stepOne";
 
 let nameFlag = false;
 let emailFlag = false;
@@ -167,7 +165,10 @@ function checkInputsFlags() {
   return nameFlag && emailFlag && numberFlag ? true : false;
 }
 
+let storage = new Storage();
 const nextStep = () => {
+  storage.createStorage(KEY, createUser());
+
   WRAPPER.classList.add(BLUR);
   const loader = new Loader(LOADER_ID);
   loader.addClass(DISPLAY);
@@ -179,4 +180,27 @@ const nextStep = () => {
   }, 2000);
 };
 
+function createUser() {
+  return {
+    email: EMAIL_INPUT.value,
+    name: NAME_INPUT.value,
+    number: NUMBER_INPUT.value,
+  };
+}
 
+(function fillInputs() {
+  const values = JSON.parse(storage.getItemFromStorage(KEY));
+  if (!values) return;
+  const { email, name, number } = values;
+  autoFillInTheForm(email, name, number);
+  if (!values) return;
+})();
+
+function autoFillInTheForm(email, name, number) {
+  nameFlag = true;
+  emailFlag = true;
+  numberFlag = true;
+  EMAIL_INPUT.value = email;
+  NAME_INPUT.value = name;
+  NUMBER_INPUT.value = number;
+}

@@ -43,6 +43,7 @@ export default class SetOptions extends Common {
   }
   
   matchOptionElement(e) {
+    // console.log(e);
     const element = e.target.closest('.option').getAttribute("data-name");
     return element    
   }
