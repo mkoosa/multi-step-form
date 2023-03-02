@@ -5,7 +5,8 @@ import Costs from "./Costs.esm.js";
 import SetOptions from "./SetOptions.esm.js";
 import User from "./User.esm.js";
 import Storage from "./Storage.esm.js";
-import BackBtn from './Back.esm.js'
+import BackBtn from "./Back.esm.js";
+import prices from "./index.js";
 
 const SWITCHER_ID = "switcherId";
 const ARCADE_COST_ID = "arcade";
@@ -19,7 +20,9 @@ const NEXT_BTN_CLASS = ".next-btn";
 const NEXT_STEP = "/html/step-3.html";
 const BACK_BTN_CLASS = ".go-back";
 const BACK_STEP = "/html/step-1.html";
-const key = 'user';
+const KEY = "user";
+const MONTHLY_POS = "flex-end";
+const YEARLY_POS = "flex-start";
 
 export class Plans extends Common {
   constructor(elementId) {
@@ -29,25 +32,71 @@ export class Plans extends Common {
       OPTION_ELEMENT_CLASS,
       OPTION_COST_CLASS
     );
-    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS);
+    this.storage = new Storage();
     this.costs = new Costs(OPTION_COST_CLASS);
-    let _switcher = new Switch(SWITCHER_ID);
+    this.switcher = new Switch(SWITCHER_ID);
     this.getSwitcher = () => _switcher;
     this.bindToElements();
+    this.stepBack();
     this.setPrices();
     this.setListeners();
+  }
+
+  stepBack() {
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS, KEY);
+    this.value = JSON.parse(localStorage.getItem(KEY));
+    if (!this.value) return;
+    this.addClass(this.value);
+    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
+    this.gestStorageValues();
+  }
+
+  gestStorageValues() {
+    let values = JSON.parse(this.storage.getItemFromStorage(KEY));
+    this.matchValuesFromStorage(values);
+  }
+
+  matchValuesFromStorage(values) {
+    let position = values.period === "year" ? YEARLY_POS : MONTHLY_POS;
+    this.switcher.saveChoiceOption(position);
+    this.switcherPosition(values);
+    this.switcher.changeTextColor(this.switcher.box);
+  }
+  
+  switcherPosition(values) {
+    values.period === "year"
+      ? (this.switcher.box.style.justifyContent = MONTHLY_POS)
+      : (this.switcher.box.style.justifyContent = YEARLY_POS);
+  }
+
+  addClass(value) {
+    let option = document.querySelector(`[data-name="${value.name}"]`);
+    option.classList.add("active");
   }
 
   bindToElements() {
     this.arcadeCost = this.bindToElement(ARCADE_COST_ID);
     this.advancedCost = this.bindToElement(ADVANCED_COST_ID);
     this.proCost = this.bindToElement(PRO_COST_ID);
-    this.switcher = this.getSwitcher();
   }
 
   setPrices() {
     this.costs.setPrice(this.switcher.selectedOption.month);
-    this.setOptions.removeClass();
+    this.switchPrices();
+  }
+
+  switchPrices() {
+    let values = JSON.parse(localStorage.getItem(KEY));
+    if (!values) return;
+    let obj = this.switcher.selectedOption;
+    let period = this.getPeriod(obj);
+    values.price = prices[values.name][period[0]];
+    if (!this.storage.getItemFromStorage(KEY));
+    this.switcher.selectedOption = obj;
+  }
+
+  getPeriod(obj) {
+    return Object.keys(obj).filter((k) => obj[k]);
   }
 
   setListeners() {
@@ -58,18 +107,15 @@ export class Plans extends Common {
   }
 
   createObjKeys(e) {
-    console.log(e);
     const name = this.setOptions.matchOptionElement(e);
     const obj = this.switcher.selectedOption;
-    const period = Object.keys(obj)
-      .filter((k) => obj[k])
-      .join();
+    const period = this.getPeriod(obj).join();
     this.createUser(name, period);
   }
 
   createUser(name, period) {
     this.user = new User(name, period);
-    this.save(key, this.user.options)
+    this.save(KEY, this.user.options);
   }
 
   nextStep(e) {
@@ -78,8 +124,7 @@ export class Plans extends Common {
   }
 
   save(key, value) {
-    let storage = new Storage()
-    storage.createStorage(key, value)
+    this.storage.createStorage(key, value);
   }
 }
 

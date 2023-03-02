@@ -104,7 +104,8 @@ p {
     -o-border-radius: 1rem;
 }
 
-.option.active {
+.option.active,
+.back {
     background-color: rgba(173, 190, 255, .1);
     border: .2rem solid hsl(213, 96%, 18%);
 
