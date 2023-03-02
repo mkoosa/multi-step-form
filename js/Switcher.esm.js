@@ -6,35 +6,36 @@ const BOX_ID = "boxId";
 const OPTION_CLASS = ".switch__option";
 const MONTHLY_POS = "flex-end";
 const YEARLY_POS = "flex-start";
-
 const OPTION_BONUS_CLASS = ".option_bonus";
-
+const OPTION_ELEMENT_CLASS = ".option";
 const MARINE_BLUE = "hsl(213, 96%, 18%)";
 const COOL_GREY = "hsl(231, 11%, 63%)";
 
 export default class Switch extends Common {
   constructor(elementId) {
     super(elementId);
-    this.options();
+    this.bindToElements();
     this.chooseOption();
-    this.selectedOption = { month: false, year: true };
+    this.selectedOption = { month: true, year: false };
     this.bonusElements = document.querySelectorAll(OPTION_BONUS_CLASS);
+    this.change();
   }
 
-  options() {
+  bindToElements() {
+    this.optionElements = document.querySelectorAll(OPTION_ELEMENT_CLASS);
     this.mouth = this.bindToElement(MONTH_ID);
     this.year = this.bindToElement(YEAR_ID);
     this.options = document.querySelectorAll(OPTION_CLASS);
     this.box = this.bindToElement(BOX_ID);
   }
 
-  chooseOption () {
-    this.box.addEventListener("click", (e) => this.change(e));
+  chooseOption() {
+    this.box.addEventListener("click", () => this.change());
   }
 
-  change(e) {
-
-    let switcher = e.target;
+  change() {
+    this.removeClass();
+    let switcher = this.box;
     let styles = window.getComputedStyle(switcher);
     let position = styles.justifyContent;
     this.saveChoiceOption(position);
@@ -43,6 +44,11 @@ export default class Switch extends Common {
     this.changeTextColor(switcher);
   }
 
+  removeClass() {
+    this.optionElements.forEach((element) =>
+      element.classList.remove("active")
+    );
+  }
   changeTextColor(element) {
     let position = element.style.justifyContent;
     this.year.style.color = position === MONTHLY_POS ? MARINE_BLUE : COOL_GREY;
