@@ -44,7 +44,7 @@ export class Plans extends Common {
 
   stepBack() {
     this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS, KEY);
-    this.value = JSON.parse(localStorage.getItem(KEY));
+    this.value = this.backBtn.value;
     if (!this.value) return;
     this.addClass(this.value);
     this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);

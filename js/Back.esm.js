@@ -4,9 +4,10 @@ export default class BackBtn extends NextBtn {
   constructor(value, btn, key) {
     super(value, btn);
     this.key = key;
+    this.getValues()
   }
 
   getValues() {
-    return JSON.parse(localStorage.getItem(this.key));
+    this.value = JSON.parse(localStorage.getItem(this.key));
   }
 }
