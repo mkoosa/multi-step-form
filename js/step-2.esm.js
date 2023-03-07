@@ -35,11 +35,13 @@ export class Plans extends Common {
     this.storage = new Storage();
     this.costs = new Costs(OPTION_COST_CLASS);
     this.switcher = new Switch(SWITCHER_ID);
+    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
     this.getSwitcher = () => _switcher;
     this.bindToElements();
     this.stepBack();
     this.setPrices();
     this.setListeners();
+    this.isNextStepAllow();
   }
 
   stepBack() {
@@ -47,7 +49,6 @@ export class Plans extends Common {
     this.value = this.backBtn.value;
     if (!this.value) return;
     this.addClass(this.value);
-    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
     this.gestStorageValues();
   }
 
@@ -62,7 +63,7 @@ export class Plans extends Common {
     this.switcherPosition(values);
     this.switcher.changeTextColor(this.switcher.box);
   }
-  
+
   switcherPosition(values) {
     values.period === "year"
       ? (this.switcher.box.style.justifyContent = MONTHLY_POS)
@@ -81,6 +82,7 @@ export class Plans extends Common {
   }
 
   setPrices() {
+    this.isNextStepAllow();
     this.costs.setPrice(this.switcher.selectedOption.month);
     this.switchPrices();
   }
@@ -120,7 +122,12 @@ export class Plans extends Common {
 
   nextStep(e) {
     this.createObjKeys(e);
-    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
+    this.isNextStepAllow();
+  }
+
+  isNextStepAllow() {
+    let value = JSON.parse(this.storage.getItemFromStorage(KEY));
+    value ? this.nextBtn.enabledButtons() : this.nextBtn.disabledButtons();
   }
 
   save(key, value) {
