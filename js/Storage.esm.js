@@ -6,6 +6,6 @@ export default class Storage {
   }
 
   getItemFromStorage(key) {
-    return localStorage.getItem(key)
-  }
+    return JSON.parse(localStorage.getItem(key));
+  };
 }

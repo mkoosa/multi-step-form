@@ -29,7 +29,7 @@ class Finish extends Common {
     this.bindToElements();
     this.storage = new Storage();
     this.nextBtn = new NextBtn(STATE, NEXT_BTN_CLASS);
-    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS);
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS, KEY);
     this.getUserOptions();
     this.setUserOptions();
     this.insertAddOptions();
@@ -51,7 +51,7 @@ class Finish extends Common {
   }
 
   getUserOptions() {
-    this.userOptions = JSON.parse(this.storage.getItemFromStorage(KEY));
+    this.userOptions = this.storage.getItemFromStorage(KEY);
   }
 
   setUserOptions() {

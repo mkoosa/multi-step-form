@@ -53,7 +53,7 @@ export class Plans extends Common {
   }
 
   gestStorageValues() {
-    let values = JSON.parse(this.storage.getItemFromStorage(KEY));
+    let values = this.storage.getItemFromStorage(KEY);
     this.matchValuesFromStorage(values);
   }
 
@@ -126,7 +126,7 @@ export class Plans extends Common {
   }
 
   isNextStepAllow() {
-    let value = JSON.parse(this.storage.getItemFromStorage(KEY));
+    let value = this.storage.getItemFromStorage(KEY);
     value ? this.nextBtn.enabledButtons() : this.nextBtn.disabledButtons();
   }
 

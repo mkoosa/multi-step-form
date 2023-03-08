@@ -189,7 +189,8 @@ function createUser() {
 }
 
 (function fillInputs() {
-  const values = JSON.parse(storage.getItemFromStorage(KEY));
+  // const values = JSON.parse(storage.getItemFromStorage(KEY));
+  const values = storage.getItemFromStorage(KEY);
   if (!values) return;
   const { email, name, number } = values;
   autoFillInTheForm(email, name, number);
