@@ -20,18 +20,48 @@ class ThirdStep extends Common {
   constructor(elementId) {
     super(elementId);
     this.user = null;
+    this.storage = new Storage();
+    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS)
     this.costs = new Costs(OPTION_COST_CLASS);
-    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS, KEY);
-    this.getPeriodTime();
     this.bindToElements();
-    this.setListeners();
+    this.getPeriodTime();
     this.setPrices();
-    this.additionalOptions = [];
+    this.setListeners();
+    this.additionalOptions = this.prepareOptions();
+    this.stepBack();
+    this.isNextStepAllow(this.additionalOptions)
   }
 
   bindToElements() {
     this.checkBoxes = document.querySelectorAll(CHECKBOX_ID);
     this.options = document.querySelectorAll(OPTION_ELEMENT_CLASS);
+  }
+
+  stepBack() {
+    this.backBtn = new BackBtn(BACK_STEP, BACK_BTN_CLASS, KEY);
+    this.matchStorageValues(this.additionalOptions);
+  }
+
+  prepareOptions() {
+    return this.getItems() ? this.getItems() : [];
+  }
+
+  getItems() {
+    return this.storage.getItemFromStorage(KEY).options;
+  }
+
+  matchStorageValues(values) {
+    values.forEach((value) => {
+      let name = Object.keys(value)[0];
+      const element = document.querySelector(`[data-name="${name}"]`);
+      this.updateVueOptionsFromStorage(element);
+    });
+  }
+
+  updateVueOptionsFromStorage(element) {
+    element.classList.add(ACTIVE_CLASS);
+    let input = element.firstElementChild.firstElementChild.nextElementSibling;
+    input.checked = true;
   }
 
   chooseOption(e) {
@@ -42,9 +72,7 @@ class ThirdStep extends Common {
 
   addClass(option) {
     option.classList.toggle(ACTIVE_CLASS);
-    let name = option.dataset.name;
-    this.additionalOption(name);
-    this.nextStep();
+    this.additionalOption(option.dataset.name);
   }
 
   setListeners() {
@@ -54,12 +82,9 @@ class ThirdStep extends Common {
   }
 
   getPeriodTime() {
-    let storage = new Storage();
-    this.timePeriod = storage.getItemFromStorage(KEY);
-    this.createUser();
-    this.timePeriod = JSON.parse(this.timePeriod).period;
+    this.user = this.createUser()
     this.selectedOptionStepBeforeIsMonth =
-      this.timePeriod === "month" ? true : false;
+      this.user.period === "month" ? true : false;
   }
 
   additionalOption(value) {
@@ -68,7 +93,6 @@ class ThirdStep extends Common {
   }
 
   addAdditionalOption(option) {
-    this.nextBtn = new NextBtn(NEXT_STEP, NEXT_BTN_CLASS);
     this.avoidDoubleValue(option);
     this.createOptionsObj(option);
   }
@@ -89,10 +113,15 @@ class ThirdStep extends Common {
     if (!target) this.removeOption(element.dataset.name);
   }
 
+  isNextStepAllow(value) {
+    console.log(value);
+    value.length ? this.nextBtn.enabledButtons() : this.nextBtn.disabledButtons()
+  }
+
   removeOption(value) {
     this.additionalOptions = this.additionalOptions.filter(
       (additionalOption) => !additionalOption.hasOwnProperty(value)
-    );
+      );
     this.updateUser(this.additionalOptions);
   }
 
@@ -100,29 +129,25 @@ class ThirdStep extends Common {
     this.costs.setPrice(this.selectedOptionStepBeforeIsMonth);
   }
 
-  nextStep() {
-    this.additionalOptions.length ? this.nextBtn.setListener(NEXT_STEP) : false;
-  }
-
   createUser() {
-    this.user = JSON.parse(this.timePeriod);
+    return this.storage.getItemFromStorage(KEY);
   }
 
   updateUser(value) {
     this.user.options = value;
     this.save(KEY, this.user);
+    this.isNextStepAllow(this.user.options);
   }
 
   save(key, value) {
-    let storage = new Storage();
-    storage.createStorage(key, value);
+    this.storage.createStorage(key, value);
   }
 
   avoidDoubleValue(value) {
     this.additionalOptions = this.additionalOptions.filter(
       (item) => !item.hasOwnProperty(value)
     );
-  }
+  };
 }
 
 const thirdStep = new ThirdStep(WRAPPER_ID);
