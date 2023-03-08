@@ -93,6 +93,7 @@ class Finish extends Common {
     const optionName = document.createElement("p");
     optionName.classList.add("option__name");
     optionName.setAttribute("id", "optionId");
+    optionName.setAttribute("tabindex", "0");
     optionName.innerText = value.key;
     optionName.innerHTML = `${value.key}<i class="fas fa-solid fa-trash"></i>`;
     return optionName;
