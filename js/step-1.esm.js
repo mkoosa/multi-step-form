@@ -168,7 +168,6 @@ function checkInputsFlags() {
 let storage = new Storage();
 const nextStep = () => {
   storage.createStorage(KEY, createUser());
-
   WRAPPER.classList.add(BLUR);
   const loader = new Loader(LOADER_ID);
   loader.addClass(DISPLAY);
@@ -189,7 +188,6 @@ function createUser() {
 }
 
 (function fillInputs() {
-  // const values = JSON.parse(storage.getItemFromStorage(KEY));
   const values = storage.getItemFromStorage(KEY);
   if (!values) return;
   const { email, name, number } = values;

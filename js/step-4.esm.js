@@ -170,6 +170,11 @@ class Finish extends Common {
     this.optionsCost();
     this.setTotalOptionsCost();
     this.storage.createStorage(KEY, this.userOptions);
+    this.hideChange(options);
+  }
+
+  hideChange(value) {
+    if (!value.length) this.changeOption.style.display = 'none';
   }
 
   confirmation() {

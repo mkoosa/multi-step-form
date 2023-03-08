@@ -114,7 +114,6 @@ class ThirdStep extends Common {
   }
 
   isNextStepAllow(value) {
-    console.log(value);
     value.length ? this.nextBtn.enabledButtons() : this.nextBtn.disabledButtons()
   }
 
