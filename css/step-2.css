@@ -180,12 +180,12 @@ p {
     font-size: 1.6rem;
     font-weight: 500;
     color: hsl(231, 11%, 63%);
-    
+
 }
 
-.switch__option--month{
+.switch__option--month {
     color: hsl(213, 96%, 18%);
-    
+
 }
 
 #yearId {
@@ -194,7 +194,7 @@ p {
 
 }
 
-.option_bonus{
+.option_bonus {
     display: none;
 }
 
@@ -394,9 +394,9 @@ p {
         padding: 1rem;
         flex-basis: 33%;
         max-width: 20rem;
+        min-height: 18rem;
+
     }
-
-
 
     .option+.option {
         margin-left: 1rem;
@@ -412,6 +412,8 @@ p {
 
     .option__content {
         text-align: center;
+        min-height: 6rem;
+
     }
 
     .go-back--desktop {

@@ -89,7 +89,7 @@ p {
 /* check-box  */
 
 .label {
-    margin-left: 3rem;
+    margin-left: 1rem;
     display: block;
     position: relative;
     padding-left: 35px;
@@ -158,7 +158,9 @@ p {
 }
 
 .option__content {
-    margin-left: 1rem;
+    margin-left: .5rem;
+    /* background-color: aqua; */
+    min-width: 18rem;
 }
 
 
@@ -276,6 +278,7 @@ p {
 /* end of select  */
 @media (min-width: 374px) {
     .option {
+        flex-direction: column;
         margin: 2rem auto;
         max-width: 45rem;
         align-items: center;
@@ -291,16 +294,30 @@ p {
 
     }
 
+    .checkmark{
+        margin-left: 1rem;
+    }
+
     .option__content {
         width: auto;
         text-align: left;
+        margin-left: 2rem;
     }
+}
+
+@media(min-width: 420px){
+    
     .option__cost {
         margin-left: auto;
+    }
+    .option{
+        flex-direction: row;
     }
 }
 
 @media(min-width:780px) {
+
+
     body {
         background-color: hsl(226, 68%, 95%);
         height: auto;
@@ -362,8 +379,10 @@ p {
     }
 
     .option {
+        min-width: 32rem;
         max-width: 50rem;
     }
+    
 
     .desktop-element__number {
         margin-right: 1rem;

@@ -143,6 +143,18 @@ img {
     align-items: center;
 }
 
+.fa-trash {
+    display: none;
+    visibility: hidden;
+}
+
+.fa-trash.active {
+    margin-left: .5rem;
+    display: inline;
+    visibility: visible;
+    cursor: pointer;
+}
+
 .option__cost,
 .option__total-cost {
     font-size: 1.7rem;
@@ -401,18 +413,6 @@ img {
         -moz-transform: translateY(3rem);
         -ms-transform: translateY(3rem);
         -o-transform: translateY(3rem);
-    }
-
-    .fa-trash {
-        display: none;
-        visibility: hidden;
-    }
-
-    .fa-trash.active {
-        margin-left: .5rem;
-        display: inline;
-        visibility: visible;
-        cursor: pointer;
     }
 
     .next-btn--desktop {
