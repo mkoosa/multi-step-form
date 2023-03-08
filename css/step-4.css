@@ -206,6 +206,11 @@ img {
     letter-spacing: .1rem;
 }
 
+#totalCostId{
+    font-weight: 800;
+    font-size: 2rem;
+    color: #483EFF;
+}
 /* end of options  */
 
 .next-btn--desktop {
