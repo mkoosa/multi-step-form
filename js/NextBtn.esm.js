@@ -4,6 +4,7 @@ const LOADER_ID = "loaderId";
 const WRAPPER_ID = "wrapper";
 const DISPLAY = "display";
 const BLUR = "blur";
+const STATE = "state";
 
 export default class NextBtn extends Common {
   constructor(value, btn) {
@@ -35,6 +36,7 @@ export default class NextBtn extends Common {
   }
 
   nextStep = (next) => {
+    if (next === STATE) return;
     this.wrapper.classList.add(BLUR);
     this.loader.addClass(DISPLAY);
     setTimeout(() => {
