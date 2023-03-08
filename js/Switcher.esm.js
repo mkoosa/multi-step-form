@@ -18,7 +18,6 @@ export default class Switch extends Common {
     this.chooseOption();
     this.selectedOption = { month: true, year: false };
     this.bonusElements = document.querySelectorAll(OPTION_BONUS_CLASS);
-    this.change();
   }
 
   bindToElements() {
@@ -30,11 +29,12 @@ export default class Switch extends Common {
   }
 
   chooseOption() {
-    this.box.addEventListener("click", () => this.change());
+    this.box.addEventListener("click", this.change);
   }
 
-  change() {
+  change = () => {
     this.removeClass();
+    this.clearUser();
     let switcher = this.box;
     let styles = window.getComputedStyle(switcher);
     let position = styles.justifyContent;
@@ -42,6 +42,10 @@ export default class Switch extends Common {
     switcher.style.justifyContent =
       position === YEARLY_POS ? MONTHLY_POS : YEARLY_POS;
     this.changeTextColor(switcher);
+  };
+
+  clearUser() {
+    localStorage.removeItem("user");
   }
 
   removeClass() {
@@ -49,6 +53,7 @@ export default class Switch extends Common {
       element.classList.remove("active")
     );
   }
+
   changeTextColor(element) {
     let position = element.style.justifyContent;
     this.year.style.color = position === MONTHLY_POS ? MARINE_BLUE : COOL_GREY;
