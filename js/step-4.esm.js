@@ -22,6 +22,7 @@ const NEXT_BTN_CLASS = ".next-btn";
 const ACTIVE = "active";
 const KEY = "user";
 const STATE = "state";
+const FIRST_STEP = "/html/step-1.html";
 
 class Finish extends Common {
   constructor(elementId) {
@@ -52,6 +53,7 @@ class Finish extends Common {
 
   getUserOptions() {
     this.userOptions = this.storage.getItemFromStorage(KEY);
+    this.nextBtn.enabledButtons();
   }
 
   setUserOptions() {
@@ -146,6 +148,7 @@ class Finish extends Common {
       basket.addEventListener("click", (e) => this.removeOption(e))
     );
   }
+
   change = () => {
     this.baskets.forEach((basket) => {
       basket.classList.toggle(ACTIVE);
@@ -181,6 +184,15 @@ class Finish extends Common {
     lastFinishWrapper.style.display = "block";
     finishWrapper.style.display = "none";
     document.querySelector("footer").style.display = "none";
+    this.reboot()
+
+  };
+
+  reboot() {
+    setTimeout(() => {
+      localStorage.clear();
+      window.location.href = FIRST_STEP;
+    }, 2000);
   };
 }
 
