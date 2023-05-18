@@ -17,12 +17,12 @@ const OPTION_CONTENT_CLASS = ".option__content";
 const FINISH_WRAPPER_CLASS = ".finish__wrapper";
 const LAST_FINISH_WRAPPER_CLASS = ".finish__wrapper--last";
 const BACK_BTN_CLASS = ".go-back";
-const BACK_STEP = "../html/step-3.html";
+const BACK_STEP = "html/step-3.html";
 const NEXT_BTN_CLASS = ".next-btn";
 const ACTIVE = "active";
 const KEY = "user";
 const STATE = "state";
-const FIRST_STEP = "/index.html";
+const FIRST_STEP = "index.html";
 
 class Finish extends Common {
   constructor(elementId) {
