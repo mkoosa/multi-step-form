@@ -12,8 +12,8 @@ const CHECKBOX_ID = "#checkboxId";
 const WRAPPER_ID = "wrapper";
 const KEY = "user";
 const BACK_BTN_CLASS = ".go-back";
-const BACK_STEP = "html/step-2.html";
-const NEXT_STEP = "html/step-4.html";
+const BACK_STEP = "../html/step-2.html";
+const NEXT_STEP = "../html/step-4.html";
 const NEXT_BTN_CLASS = ".next-btn";
 
 class ThirdStep extends Common {

@@ -1,6 +1,8 @@
 import Loader from "./Loader.esm.js";
 import Storage from "./Storage.esm.js";
 
+
+console.log('step1');
 //validation form
 const NUMBER_LENGTH = 8;
 const NAME_INPUT_ID = "formName";
@@ -167,6 +169,7 @@ function checkInputsFlags() {
 
 let storage = new Storage();
 const nextStep = () => {
+  console.log('next');
   storage.createStorage(KEY, createUser());
   WRAPPER.classList.add(BLUR);
   const loader = new Loader(LOADER_ID);

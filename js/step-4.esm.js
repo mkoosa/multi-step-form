@@ -22,7 +22,7 @@ const NEXT_BTN_CLASS = ".next-btn";
 const ACTIVE = "active";
 const KEY = "user";
 const STATE = "state";
-const FIRST_STEP = "html/step-1.html";
+const FIRST_STEP = "../html/step-1.html";
 
 class Finish extends Common {
   constructor(elementId) {
