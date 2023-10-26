@@ -1,6 +1,6 @@
 # Multi-step form
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor]<https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ>
+This is a solution to the Multi-step form challenge on Frontend Mentor <https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ>
 
 ## Installation
 
@@ -35,7 +35,7 @@ Users is able to:
 - how module work and communicate witch each other
 - how store, reuse and get data from local storage
 - how build and implements classes
-- ti improve OPP skills
+- to improve OPP skills
 
 ## Developer
 
