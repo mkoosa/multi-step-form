@@ -1,8 +1,5 @@
-# Multi-step form
 
-This is a solution to the Multi-step form challenge on Frontend Mentor <https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ>
-
-## Installation
+# Installation
 
 1.Clone repository to VSCode
 2.Open the app by using live server
@@ -39,4 +36,5 @@ Users is able to:
 
 ## Developer
 
+This is a solution to the Multi-step form challenge on Frontend Mentor
 KoOsa
